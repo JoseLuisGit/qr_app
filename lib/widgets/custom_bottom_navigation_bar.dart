@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:qr_app/providers/ui_provider.dart';
 
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -6,10 +9,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final uiProvider = Provider.of<UiProvider>(context);
+    final currentIndex = uiProvider.currentIndexScreen;
+
     return BottomNavigationBar(
-      currentIndex: 0,
+      currentIndex: currentIndex,
+      onTap: (index){
+        uiProvider.setCurrentIndexScreen = index;
+      },
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.directions), label: 'Direcciones'),
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
       ],
     );
