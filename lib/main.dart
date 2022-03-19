@@ -15,6 +15,13 @@ class MyApp extends StatelessWidget {
         'map': (_)=>MapScreen()
 
       },
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo
+        )
+
+      )
     );
   }
 }
