@@ -7,16 +7,20 @@ import 'package:qr_app/models/scan.dart';
 
 class ScanRepository{
 
-  Future<List<Scan?>?>? getAll() async{
+  Future<List<Scan>> getAll() async{
     final Database db = await DbProvider.db.database;
 
     final res = await db.query('scans');
 
-    if (res.isNotEmpty) {
-      return res.map((e) => Scan.fromMap(e)).toList();
-    } else {
-      return null;
-    }
+    return res.map((e) => Scan.fromMap(e)).toList();
+  }
+
+    Future<List<Scan>> getByType(String type) async {
+    final Database db = await DbProvider.db.database;
+    
+    final res  = await db.query('scans',where: 'type = ?', whereArgs: [ type ]);
+    
+    return res.map((e) => Scan.fromMap(e)).toList();
   }
 
   Future<Scan?>? getById(int id) async {
@@ -30,7 +34,7 @@ class ScanRepository{
         null;
   }
 
-  create(Scan newScan) async{
+  Future<int> create(Scan newScan) async{
 
     final Database db = await DbProvider.db.database;
 

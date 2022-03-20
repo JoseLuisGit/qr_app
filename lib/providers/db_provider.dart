@@ -24,8 +24,6 @@ class DbProvider{
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
 
     final path = join(documentsDirectory.path, 'scansDB.db');
-
-    print(path);
     
     return await openDatabase(
       path, 
