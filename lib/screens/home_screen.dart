@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:qr_app/providers/scan_provider.dart';
 import 'package:qr_app/providers/ui_provider.dart';
 
 import 'package:qr_app/widgets/custom_bottom_navigation_bar.dart';
@@ -37,12 +39,16 @@ class _HomeBodyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final uiProvider = Provider.of<UiProvider>(context);
+    final scanProvider = Provider.of<ScanProvider>(context, listen: false);
+
     final currentIndex = uiProvider.currentIndexScreen;
 
     switch (currentIndex) {
       case 0:
+        scanProvider.getAllByType('http');
         return DirectionsScreen();
       case 1:
+        scanProvider.getAllByType('geo');
         return MapsScreen();
       default:
       return  DirectionsScreen();
