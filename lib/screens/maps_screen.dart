@@ -20,6 +20,7 @@ class MapsScreen extends StatelessWidget {
       itemBuilder: (_, index){
         final scan = scans[index];
         return ListTile(
+          leading: const Icon(Icons.map_outlined),
           title: Text(scan.value),
           subtitle: Text('id: ${scan.id}'),
           trailing: const Icon(Icons.arrow_drop_down),
