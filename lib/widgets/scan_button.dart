@@ -22,7 +22,7 @@ class ScanButton extends StatelessWidget {
         }
 
       },
-      child: Icon(Icons.qr_code_2),
+      child: const Icon(Icons.qr_code_2),
     );
   }
 }
