@@ -43,12 +43,9 @@ class ScanProvider extends ChangeNotifier{
   }
 
   deleteById(int id) async{
+    scans.removeWhere((scan) => scan.id == id);
     await scanRepository.deleteById(id);
-    getAllByType(currentType);
-    notifyListeners();
   }
 
-
-  
 
 }

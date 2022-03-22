@@ -6,6 +6,7 @@ import 'package:qr_app/providers/ui_provider.dart';
 
 import 'package:qr_app/widgets/custom_bottom_navigation_bar.dart';
 import 'package:qr_app/widgets/scan_button.dart';
+import 'package:qr_app/widgets/scan_list.dart';
 
 import 'screens.dart';
 
@@ -51,12 +52,13 @@ class _HomeBodyScreen extends StatelessWidget {
     switch (currentIndex) {
       case 0:
         scanProvider.getAllByType('http');
-        return DirectionsScreen();
+        return const ScanList(type: 'http');
       case 1:
         scanProvider.getAllByType('geo');
-        return MapsScreen();
+        return const ScanList(type: 'geo');
       default:
-      return  DirectionsScreen();
+      scanProvider.getAllByType('http');
+      return const ScanList(type: 'http');
     }
   }
 }
