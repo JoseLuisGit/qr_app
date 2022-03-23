@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qr_app/models/scan.dart';
 
-import 'package:qr_app/providers/db_provider.dart';
 import 'package:qr_app/providers/ui_provider.dart';
 
-import 'package:qr_app/repositories/scan_repository.dart';
 
 
 class CustomBottomNavigationBar extends StatelessWidget {

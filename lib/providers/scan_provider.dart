@@ -9,18 +9,19 @@ class ScanProvider extends ChangeNotifier{
   String currentType = 'http';
   ScanRepository scanRepository = ScanRepository();
 
-  createScan(String value) async{
+  Future<Scan> createScan(String value) async{
 
     Scan newScan = Scan(value: value);
 
     final id = await scanRepository.create(newScan);
-
     newScan.id = id;
 
     if(newScan.type == currentType){
       scans.add(newScan);
       notifyListeners();
     }
+
+    return newScan;
 
   }
 
@@ -46,6 +47,5 @@ class ScanProvider extends ChangeNotifier{
     scans.removeWhere((scan) => scan.id == id);
     await scanRepository.deleteById(id);
   }
-
 
 }
